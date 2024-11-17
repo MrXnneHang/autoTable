@@ -131,6 +131,8 @@ def _temp_set_owner_repo(owner_repo: str):
     """
     old_owner_repo = Fetcher.get_owner_repo()
     if owner_repo != "":
+        if owner_repo[-1] == "/":
+            owner_repo = owner_repo[:-1]
         Fetcher.set_owner_repo(owner_repo)
     yield
     Fetcher.set_owner_repo(old_owner_repo)
